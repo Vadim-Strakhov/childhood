@@ -38,8 +38,8 @@
               <div class="header__contacts-item">
                 <img src="<?php echo bloginfo('template_url'); ?>/assets/img/icons/svg/phone.svg" alt="телефон" class="header__contacts-logo" />
                 <div class="header__contacts-tel">
-                  <a href="tel:<?php the_field('tel_1')?>"> <?php the_field('tel_1')?> </a>
-                  <a href="tel:<?php the_field('tel_2')?>"> <?php the_field('tel_2')?> </a>
+                  <a href="tel:<?php the_field('tel_1')?>"> <?php the_field('tel_1', 2)?></a>
+                  <a href="tel:<?php the_field('tel_2')?>"> <?php the_field('tel_2', 2)?></a>
                 </div>
               </div>
               <div class="header__contacts-item">
@@ -52,23 +52,28 @@
           </div>
         </div>
         <nav class="row" data-slide="1">
-          <ul class="header__nav">
-            <li>
-              <a class="header__nav-item" href="#about">Про компанию</a>
-            </li>
-            <li>
-              <a class="header__nav-item" href="#specialists">Наша команда</a>
-            </li>
-            <li>
-              <a class="header__nav-item" href="#toys">Игрушки</a>
-            </li>
-            <li>
-              <a class="header__nav-item" href="#aboutus">Наша история</a>
-            </li>
-            <li>
-              <a class="header__nav-item" href="#contacts">Контакты и отзывы</a>
-            </li>
-          </ul>
+          <?php 
+
+            wp_nav_menu( [
+              // 'theme_location'  => '',
+              'menu'            => 'Main',
+              'container'       => false,
+              // 'container_class' => '',
+              // 'container_id'    => '',
+              'menu_class'      => 'header__nav',
+              // 'menu_id'         => '',
+              'echo'            => true,
+              'fallback_cb'     => 'wp_page_menu',
+              // 'before'          => '',
+              // 'after'           => '',
+              // 'link_before'     => '',
+              // 'link_after'      => '',
+              'items_wrap'      => '<ul class="header__nav">%3$s</ul>',
+              'depth'           => 1,
+              // 'walker'          => '',
+            ] );
+
+          ?>
         </nav>
       </div>
       <div class="header__hamburger">
